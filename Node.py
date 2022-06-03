@@ -1,6 +1,6 @@
 class Node:
     parent = None
-    current_game_state = []
+    game_state = []
     empty_tile_coordinate = (0, 0)
     # moves
     g = 0
@@ -9,9 +9,9 @@ class Node:
     # f = g + h
     f = 0
 
-    def __init__(self, parent, current_game_state, empty_tile_coordinate, g, h):
+    def __init__(self, parent, game_state, empty_tile_coordinate, g, h):
         self.parent = parent
-        self.current_game_state = current_game_state
+        self.game_state = game_state
         self.empty_tile_coordinate = empty_tile_coordinate
         self.g = g
         self.h = h
