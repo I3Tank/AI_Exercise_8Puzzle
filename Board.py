@@ -7,6 +7,7 @@ empty_tile_coord = [0, 0]
 
 # goal State
 goal_state = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+# goal_state = [1, 2, 3, 4, 5, 6, 7, 8, 0]
 current_state = []
 
 

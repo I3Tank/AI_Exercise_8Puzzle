@@ -1,5 +1,7 @@
 class Block:
+    # a reference to the button of the block
     button_ref = 0
+    # the displayed number
     number = 0
     coordinate = 0
 

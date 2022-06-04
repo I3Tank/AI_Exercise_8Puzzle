@@ -5,9 +5,9 @@ import random
 
 from AStar import AStar
 from Helper import Helper
-import Board as Board
 from Block import Block
 from Player import Player
+import Board as Board
 
 window = tk.Tk()
 window.title("8-Puzzle")
@@ -16,7 +16,6 @@ window.eval('tk::PlaceWindow . center')
 # create Menu bar
 menubar = tk.Menu(window)
 filemenu = tk.Menu(menubar)
-
 
 buttonSize = 100
 fontStyle = myFont.Font(size=20)
@@ -41,6 +40,11 @@ def create_solvable_board():
     while not Helper.check_if_solvable(new_game_state):
         random.shuffle(new_game_state)
 
+    # these are the game states that are used in our comparison
+    # new_game_state = [2, 8, 4, 1, 6, 5, 0, 3, 7]
+    # new_game_state = [2, 4, 0, 3, 5, 8, 1, 6, 7]
+    # new_game_state = [7, 1, 3, 8, 4, 6, 0, 2, 5]
+
     # create a 3x3 board
     counter = 0
     for i in range(3):
@@ -51,7 +55,6 @@ def create_solvable_board():
                 relief=tk.RAISED,
                 borderwidth=0
             )
-            # don't draw the box for the "0" tile
             # padding between the buttons
             frame.grid(row=i, column=j, padx=1, pady=1)
             button = tk.Button(master=frame,
@@ -64,7 +67,6 @@ def create_solvable_board():
                                )
             frame_list.append(frame)
             button_coord = (j, i)
-            # buttonInfo = (frame, button_coord)
             Board.current_state.append(new_game_state[counter])
             # create our block
             new_block = Block(button, new_game_state[counter], button_coord)
@@ -85,7 +87,9 @@ def create_solvable_board():
 
 
 filemenu.add_command(label="Reset Board", command=create_solvable_board)
-filemenu.add_command(label="Start A*", command=AStar.solve_using_a_star)
+filemenu.add_command(label="Solve using misplaced tiles", command=AStar.solve_using_misplaced_tiles)
+filemenu.add_command(label="Solve using manhattan distance", command=AStar.solve_using_manhattan_distance)
+filemenu.add_command(label="Compare heuristics", command=AStar.compare_heuristics)
 
 menubar.add_cascade(label="Menu", menu=filemenu)
 window.config(menu=menubar)

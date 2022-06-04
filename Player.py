@@ -6,7 +6,9 @@ class Player:
 
     @staticmethod
     def move_to_empty_box(empty_box_coord, block_to_move):
+        # move the button inside the grid
         block_to_move.button_ref.master.grid(row=empty_box_coord[1], column=empty_box_coord[0])
+        # update game state and empty coordinate
         Helper.swap_numbers_in_state(block_to_move.number, 0, Board.current_state)
         Board.update_empty_coord(block_to_move.coordinate)
 
@@ -22,7 +24,7 @@ class Player:
 
         def try_move(coordinate):
             # check if the move is legal and if it is the empty block
-            if Helper.check_if_coord_inside_board(coordinate) and coordinate == tuple(Board.get_empty_coord()):
+            if coordinate == tuple(Board.get_empty_coord()):
                 # move the block and update its coordinates
                 Player.move_to_empty_box(coordinate, block)
                 block.coordinate = coordinate

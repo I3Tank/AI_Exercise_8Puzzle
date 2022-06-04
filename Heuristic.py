@@ -11,7 +11,7 @@ class Heuristic:
         for i in goal_state:
             if goal_state[i] != state_to_check[i]:
                 misplaced_blocks += 1
-        return misplaced_blocks
+        return misplaced_blocks - 1
 
     # static method to check the manhattan distance
     @staticmethod

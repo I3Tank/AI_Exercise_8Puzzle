@@ -27,6 +27,7 @@ class Helper:
             return False
 
     @staticmethod
+    # swap two numbers inside a game state (list)
     def swap_numbers_in_state(a, b, list_to_swap):
         index_a = list_to_swap.index(a)
         index_b = list_to_swap.index(b)
@@ -37,6 +38,6 @@ class Helper:
         return list_to_swap
 
     @staticmethod
-    def get_block_number_by_coordinates(coordinates):
+    def get_block_number_by_coordinates(coordinates, game_state):
         index = Board.get_coord_list().index(coordinates)
-        return Board.current_state[index]
+        return game_state[index]
